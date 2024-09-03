@@ -24,7 +24,6 @@ SIZE = [9, 9]
 def axes():
     step = 10
     screen.fill(bg)
-
     for i in range(1, 60):
         pygame.draw.line(screen, step_color,
                          [step, 0],
@@ -33,7 +32,6 @@ def axes():
                          [0, step],
                          [600, step], 1)
         step += 10
-
     pygame.draw.line(screen, black,
                      [300, 0],
                      [300, 600], 2)
@@ -42,8 +40,6 @@ def axes():
                      [600, 300], 2)
     pygame.draw.circle(screen, black,
                        (300, 300), 3)
-
-    # -----Стрелочки на осях-----#
     pygame.draw.line(screen, black,
                      [600, 300],
                      [590, 305], 2)
@@ -73,7 +69,6 @@ def axes():
         pygame.draw.line(screen, black,
                          [298, n],
                          [302, n], 1)
-
         if i % 5 == 0:
             if j != 0:
                 text_step = font_step.render(str(int(j/10)), True, black)
@@ -95,9 +90,7 @@ def axes():
                                  [n, 296],
                                  [n, 304], 2)
             j += 50
-
         n += 10
-    # pygame.draw.lines(screen, red, True, [[350, 350], [400, 320], [370, 310]], 2)
 
 
 def draw_pixel(position, COLOR):
@@ -110,7 +103,6 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             quit()
-
     ras = 16
     d = 0
     x = 0
@@ -126,7 +118,6 @@ while True:
                 x += 1
                 y -= 1
                 d = d + 2 * x - 2 * y + 2
-
         elif (d > 0):
             if abs(pow((x + 1), 2) + pow(y - 1, 2) - pow(ras, 2)) - abs(pow((x), 2) + pow(y - 1, 2) - pow(ras, 2)) <= 0:
                 x += 1
@@ -144,5 +135,4 @@ while True:
         draw_pixel([-(x * 10) + 300, y * 10 + 300], blue)
         draw_pixel([-(x * 10) + 300, -(y * 10) + 300], green)
         draw_pixel([x * 10 + 300, -(y * 10) + 300], purple)
-
         pygame.display.update()
